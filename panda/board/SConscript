@@ -50,6 +50,11 @@ build_projects["panda"] = {
   ],
 }
 
+if FindFile('dp_vw_panda', '/data/params/d') != None:
+  with open('/data/params/d/dp_vw_panda') as f:
+    if (int(f.read().strip())) == 1:
+      build_projects["panda"]["PROJECT_FLAGS"].append('-Dvw')
+      
 # arm-none-eabi-gcc on comma two has no cortex-m7 support
 if not os.path.exists("/EON"):
   build_projects["panda_h7"] = {
